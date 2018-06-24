@@ -5,7 +5,7 @@ class Emitter {
    * @memberof Emitter
    */
   constructor() {
-    // Ваш код
+    this.event = {}
   }
 
   /**
@@ -16,7 +16,8 @@ class Emitter {
    * @memberof Emitter
    */
   on(event, handler) {
-    // Ваш код
+    if(!this.event[name]){this.event[name] = []}
+    this.event[name].push(handler);
   }
 
   /**
@@ -28,7 +29,10 @@ class Emitter {
    * @memberof Emitter
    */
   emit(event, data) {
-    // Ваш код
+    const eventType = this.event[name];
+    if(eventType){
+    	eventType.forEach(fn => fn.call(null, data))
+    }
   }
 }
 
